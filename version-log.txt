@@ -1,0 +1,33 @@
+--PROJECT IS ON BASE LEVEL--
+What done:
+ - The base of the architecture
+ - Factories
+  * Base
+  * For commands, controllers and events
+ - Controllers' base
+ - Events' base
+
+What is in progress:
+ - Models' base
+ - Router
+  * Chain "Kernel -> boot&router-setup -> Event --> Kernel -> Router -> Requests --> Router -> Controllers"
+  * Router model
+  * Router commands
+ - Render
+  * Views models
+  * Layouts
+  * Action Views
+ - HTMLBuilder & HTML
+
+Features:
+ - Database
+  * Connection
+  * Queries
+  * Queries' Builders
+  * Select requests cache
+ - Methods of BaseObj
+ - Users
+  * Roles
+  * Privileges
+  * etc.
+ - Providers
