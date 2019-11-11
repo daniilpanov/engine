@@ -7,4 +7,3 @@ $_SERVER['DOCUMENT_ROOT'] .= "/engine";
 system_config("autoload");
 
 \app\Kernel::get()->start();
-

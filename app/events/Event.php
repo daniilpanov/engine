@@ -8,12 +8,13 @@ use app\BaseObj;
 
 abstract class Event extends BaseObj
 {
-    private $find_key = null;
-    protected $func = null;
+    protected $find_key = null;
+    protected $func;
 
     public function __construct($func, $find_key = null)
     {
         $this->func = $func;
+        $this->find_key = $find_key;
     }
 
     public function check($str)

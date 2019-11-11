@@ -1,0 +1,9 @@
+AddDefaultCharset UTF-8
+
+php_value short_open_tag 1
+
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . http://localhost/engine/
