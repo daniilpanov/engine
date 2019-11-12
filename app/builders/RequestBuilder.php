@@ -9,9 +9,11 @@ use app\factories\static_factories\StaticFactory;
 class RequestBuilder extends Builder
 {
     public static $default_controller;
+    public static $domain = null;
 
     public $url = "";
     public $get = [];
+    public $fragments = [];
     public $controller, $method = null;
 
     public function __construct($controller = null)
@@ -26,12 +28,17 @@ class RequestBuilder extends Builder
 
     public function url($url)
     {
-        $this->url = $url;
+        $this->url = (self::$domain ? (self::$domain . "/" . $url) : $url);
     }
 
     public function get($key = null, $value = null)
     {
         $this->get[] = ['key' => $key, 'value' => $value];
+    }
+
+    public function fragment($id)
+    {
+
     }
 
     public function init()

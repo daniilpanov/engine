@@ -6,6 +6,7 @@ namespace app;
 
 use app\commands\RouterCommands;
 use app\factories\static_factories\StaticFactory;
+use app\helpers\Url;
 
 class Kernel
 {
@@ -30,7 +31,8 @@ class Kernel
 
         //
 
-
+        //
+        Url::init(StaticFactory::models()->createModel("Url", [getUrl()]));
         // Routing
         RouterCommands::route();
     }

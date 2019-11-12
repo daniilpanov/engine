@@ -11,14 +11,9 @@ abstract class Command extends BaseObj
 {
     public static function __callStatic($name, $arguments)
     {
-        if (!method_exists(static::class, $name))
-        {
-            $name .= "C";
-            return StaticFactory::commands()
-                ->getCommandClass(static::class, true)
-                ->$name(...$arguments);
-        }
-
-        return call_user_func_array([static::class, $name], $arguments);
+        $name .= "C";
+        return StaticFactory::commands()
+            ->getCommandClass(static::class, true)
+            ->$name(...$arguments);
     }
 }

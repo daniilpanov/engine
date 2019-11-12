@@ -1,6 +1,13 @@
 <?php
 
-function is_image($filename) {
+function getUrl()
+{
+    $url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    return $url;
+}
+
+function is_image($filename)
+{
     $is = @getimagesize($filename);
     if (!$is)
         return false;
@@ -54,12 +61,12 @@ function load_file($filepath, $loading_type, $exception_string, $type = "php", $
         $exception_string .= " (" . date("d\\.m\\.Y \\a\\t h\\:i\\:s") . ")";
     }
 
-    $path = path_convert($_SERVER['DOCUMENT_ROOT'] . "/$filepath.$type");
+    $path = path_convert(PHP_HOME . "/$filepath.$type");
 
     if (!is_file($path))
     {
         file_put_contents(
-            path_convert($_SERVER['DOCUMENT_ROOT'] . "/files/dumps-and-logs/loading-logs.log"),
+            path_convert(PHP_HOME . "/files/dumps-and-logs/loading-logs.log"),
             "$exception_string\n",
             FILE_APPEND
         );
@@ -87,7 +94,7 @@ function load_file($filepath, $loading_type, $exception_string, $type = "php", $
             default:
                 file_put_contents(
                     path_convert(
-                        $_SERVER['DOCUMENT_ROOT']
+                        PHP_HOME
                         . "/files/dumps-and-logs/loading-logs.log"
                     ),
                     "Loading error: unknown loading type - '$loading_type' ("
