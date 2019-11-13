@@ -6,6 +6,8 @@ namespace app\controllers;
 
 class SiteController extends Controller
 {
+    private $lng = "ru";
+
     public function boot()
     {
         
@@ -16,18 +18,18 @@ class SiteController extends Controller
         
     }
 
-    public function actionPage($page, $lng = null)
+    public function lng($lng)
     {
-        if ($lng === null)
-        {
-            $lng = $_SESSION['lng'] or "ru";
-        }
-        
-        
+        $_SESSION['lng'] = $this->lng = $lng;
     }
 
-    public function test($var1)
+    public function page($page)
     {
-        echo "OK!!!!!!!$var1";
+        echo $page;
+    }
+
+    public function index()
+    {
+        echo "Routing is working!..";
     }
 }

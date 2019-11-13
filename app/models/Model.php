@@ -13,7 +13,7 @@ abstract class Model extends BaseObj
         static::init($this, $params);
     }
 
-    abstract public static function init($obj, $params = []);
+    abstract public static function init(self $obj, $params = []);
 
     protected static function setData($obj, $data_arr)
     {

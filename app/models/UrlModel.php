@@ -20,7 +20,7 @@ class UrlModel extends Model
         parent::__construct([$url]);
     }
 
-    public static function init($obj, $params = [])
+    public static function init(self $obj, $params = [])
     {
         if (count($params) === 1 && !is_array($params[0]))
         {

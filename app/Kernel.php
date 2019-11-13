@@ -37,10 +37,9 @@ class Kernel
         RouterCommands::route();
     }
 
-    public function registerEvent($key_value_regex, $controller, $method = null)
+    public function registerEvent($requestEv)
     {
-        // Call to EventsFactory and register an request event
-
+        return_factory("events")->registerEvent($requestEv);
     }
 
     private function registerRequestModel($request)

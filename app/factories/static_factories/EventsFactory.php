@@ -60,7 +60,7 @@ class EventsFactory extends StaticFactory
         {
             foreach (self::$instances[$events_name] as $key => $instance)
             {
-                if ($params = $instance->check($find_str))
+                if (($params = $instance->check($find_str)) !== false)
                 {
                     unset($params[0]);
                     $instance->run($params);

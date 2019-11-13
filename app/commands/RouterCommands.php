@@ -4,20 +4,12 @@
 namespace app\commands;
 
 
-use app\factories\static_factories\StaticFactory;
+use app\helpers\Url;
 
 class RouterCommands extends Command
 {
     public function routeC()
     {
-        $requests = StaticFactory::models()->searchModel("Request");
-
-        if ($requests)
-        {
-            foreach ($requests as $request)
-            {
-                // Take the needle params from model, generate the FindStr and call to events by FindStr
-            }
-        }
+        return_factory("events")->runEventsByFindString("Request", Url::getFullUrl());
     }
 }

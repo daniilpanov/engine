@@ -4,20 +4,21 @@
 namespace app\events;
 
 
-use app\factories\static_factories\StaticFactory;
-
 class RequestEv extends Event
 {
     public function __construct($find_key, $controller, $method = null)
     {
+        $find_key = str_replace("?", "\?", $find_key);
+        $find_key = str_replace("/", "\/", $find_key);
+
         $func = ($method)
             ? (function ($arguments = []) use ($controller, $method)
             {
-                StaticFactory::controllers()->getController($controller, true)->$method(...$arguments);
+                return_factory("controllers")->getController($controller, true)->$method(...$arguments);
             })
             : (function ($arguments = []) use ($controller)
             {
-                StaticFactory::controllers()->getController($controller, true)(...$arguments);
+                return_factory("controllers")->getController($controller, true)(...$arguments);
             });
 
         parent::__construct($func, $find_key);

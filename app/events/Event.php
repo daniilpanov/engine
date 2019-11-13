@@ -14,8 +14,7 @@ abstract class Event extends BaseObj
     public function __construct($func, $find_key = null)
     {
         $this->func = $func;
-        $find_key = str_replace("?", "\?", $find_key);
-        $this->find_key = str_replace("/", "\/", $find_key);
+        $this->find_key = $find_key;
     }
 
     public function check($str)
@@ -23,7 +22,7 @@ abstract class Event extends BaseObj
         if ($this->find_key === null)
             return true;
 
-        if (preg_match("/" . $this->find_key . "/", $str, $matches))
+        if (preg_match('/^' . $this->find_key . '$/m', $str, $matches))
             return $matches;
 
         return false;

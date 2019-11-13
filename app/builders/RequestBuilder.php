@@ -46,7 +46,7 @@ class RequestBuilder extends Builder
         if (!empty($this->get))
         {
             if ($this->get[0]['key'] === null)
-                return StaticFactory::events()
+                return return_factory("events")
                     ->createEvent(
                         "Request",
                         [$full_url, $this->controller, $this->method]
