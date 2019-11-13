@@ -47,6 +47,8 @@ class EventsFactory extends StaticFactory
             {
                 $instance->run();
             }
+
+            unset(self::$instances[$events_name]);
         }
     }
 
@@ -56,10 +58,14 @@ class EventsFactory extends StaticFactory
 
         if (isset(self::$instances[$events_name]))
         {
-            foreach (self::$instances[$events_name] as $instance)
+            foreach (self::$instances[$events_name] as $key => $instance)
             {
-                if ($instance->check($find_str))
-                    $instance->run();
+                if ($params = $instance->check($find_str))
+                {
+                    unset($params[0]);
+                    $instance->run($params);
+                    unset(self::$instances[$events_name][$key]);
+                }
             }
         }
     }

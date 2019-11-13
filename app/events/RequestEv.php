@@ -11,13 +11,13 @@ class RequestEv extends Event
     public function __construct($find_key, $controller, $method = null)
     {
         $func = ($method)
-            ? (function ($arguments) use ($controller, $method)
+            ? (function ($arguments = []) use ($controller, $method)
             {
-                StaticFactory::controllers()->getController($controller)->$method(...$arguments);
+                StaticFactory::controllers()->getController($controller, true)->$method(...$arguments);
             })
-            : (function ($arguments) use ($controller)
+            : (function ($arguments = []) use ($controller)
             {
-                StaticFactory::controllers()->getController($controller)(...$arguments);
+                StaticFactory::controllers()->getController($controller, true)(...$arguments);
             });
 
         parent::__construct($func, $find_key);

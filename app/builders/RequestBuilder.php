@@ -13,32 +13,30 @@ class RequestBuilder extends Builder
 
     public $url = "";
     public $get = [];
-    public $fragments = [];
     public $controller, $method = null;
 
     public function __construct($controller = null)
     {
         $this->controller = ($controller === null) ? self::$default_controller : $controller;
+        $this->url = self::$domain;
     }
 
     public function method($method)
     {
         $this->method = $method;
+        return $this;
     }
 
     public function url($url)
     {
-        $this->url = (self::$domain ? (self::$domain . "/" . $url) : $url);
+        $this->url = (self::$domain ? (self::$domain . $url) : $url);
+        return $this;
     }
 
     public function get($key = null, $value = null)
     {
         $this->get[] = ['key' => $key, 'value' => $value];
-    }
-
-    public function fragment($id)
-    {
-
+        return $this;
     }
 
     public function init()
@@ -60,6 +58,8 @@ class RequestBuilder extends Builder
             {
                 $full_url .= ($item['value'] ? ($item['key'] . "=" . $item['value']) : $item['key']) . "&";
             }
+
+            $full_url = substr($full_url, 0, -1);
         }
 
         return StaticFactory::events()

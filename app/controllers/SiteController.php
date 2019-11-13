@@ -25,4 +25,9 @@ class SiteController extends Controller
         
         
     }
+
+    public function test($var1)
+    {
+        echo "OK!!!!!!!$var1";
+    }
 }

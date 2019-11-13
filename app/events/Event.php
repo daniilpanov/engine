@@ -14,7 +14,8 @@ abstract class Event extends BaseObj
     public function __construct($func, $find_key = null)
     {
         $this->func = $func;
-        $this->find_key = $find_key;
+        $find_key = str_replace("?", "\?", $find_key);
+        $this->find_key = str_replace("/", "\/", $find_key);
     }
 
     public function check($str)
@@ -30,6 +31,6 @@ abstract class Event extends BaseObj
 
     public function run($params = [])
     {
-        return call_user_func_array($this->func, $params);
+        return call_user_func($this->func, $params);
     }
 }

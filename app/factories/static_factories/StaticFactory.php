@@ -5,6 +5,7 @@ namespace app\factories\static_factories;
 
 
 use app\BaseObj;
+use app\factories\static_factories\BuildersFactory;
 
 abstract class StaticFactory extends BaseObj
 {
@@ -29,6 +30,11 @@ abstract class StaticFactory extends BaseObj
     public static function controllers(): ControllersFactory
     {
         return self::factory(ControllersFactory::class);
+    }
+
+    public static function builders(): BuildersFactory
+    {
+        return self::factory(BuildersFactory::class);
     }
 
     public static function factory($factory)
