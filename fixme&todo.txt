@@ -1,0 +1,12 @@
+TODO: Exclude 'RequestEv' to three classes: 'UrlEv', 'GetEv', and 'PostEv' and edit Router
+TODO: Make 'StaticFactory' as helper 'Factory'
+TODO: From 'EventsFactory' move methods to run Events to new class 'EventsCore'
+TODO: Remove 'ModelsFactory', create class 'ModelsCore'
+TODO: Insert into class 'ModelsCore' methods: search, create, createInNotExists, exists, add, delete
+TODO: Insert into class 'ModelsCore' method createGroup - creates a group of models by ONE request to DB
+    TIP: any model class has static var where keep objects of model, static methods for use kept objects,
+     and methods for use current object (non-static)
+
+    ----------------------------------------------------------------------------------------------------------------
+
+TODO: Create dirs Kernel, Frontend and Backend
