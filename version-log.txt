@@ -6,13 +6,13 @@ What done:
   * For commands, controllers and events
  - Controllers' base
  - Events' base
+ - Router
+  * Chain "Kernel -> boot&router-setup -> EventsFactory --> Kernel -> Router -> EventsFactory -> ControllersFactory"
+  * Routing event
+  * Router commands (only one ;-D)
 
 What is in progress:
  - Models' base
- - Router
-  * Chain "Kernel -> boot&router-setup -> Event --> Kernel -> Router -> Requests --> Router -> Controllers"
-  * Router model
-  * Router commands
  - Render
   * Views models
   * Layouts
