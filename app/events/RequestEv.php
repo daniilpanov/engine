@@ -23,9 +23,4 @@ class RequestEv extends Event
 
         parent::__construct($func, $find_key);
     }
-
-    public function run($params = [])
-    {
-        parent::run($params);
-    }
 }

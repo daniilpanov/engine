@@ -1,0 +1,6 @@
+Make RequestEv super class of subclasses: GetEv, PostEv and UrlEv.
+Then make builders for those
+and check validation of properties of those classes.
+After this, modifying router: make router able to check all Requests -
+    get only path/queries from url string and run Events by FIND_STRING,
+    and then check POST requests
