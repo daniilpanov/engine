@@ -21,7 +21,7 @@ function is_image($filename)
 function require_class($namespace)
 {
     load_file(
-        path_convert($namespace, "\\"),
+        str_replace("engine", "kernel", path_convert($namespace, "\\")),
         "ro",
         "Requiring failed: class '$namespace' does not exist"
     );

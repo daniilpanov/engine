@@ -7,6 +7,7 @@ namespace app;
 use app\commands\RouterCommands;
 use app\factories\static_factories\StaticFactory;
 use app\helpers\Url;
+use engine\baseOf\EventKernel;
 
 class Kernel
 {
@@ -39,7 +40,7 @@ class Kernel
 
     public function registerEvent($requestEv)
     {
-        return_factory("events")->registerEvent($requestEv);
+        EventKernel::get()->register($requestEv);
     }
 
     private function registerRequestModel($request)

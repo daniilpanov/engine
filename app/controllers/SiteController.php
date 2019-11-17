@@ -20,7 +20,7 @@ class SiteController extends Controller
 
     public function lng($lng)
     {
-        $_SESSION['lng'] = $this->lng = $lng;
+        echo $_SESSION['lng'] = $this->lng = $lng;
     }
 
     public function page($page)

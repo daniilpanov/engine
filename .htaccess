@@ -7,3 +7,4 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . http://localhost/engine/
+RewriteRule ^index.php$ http://localhost/engine/ [QSA,R]

@@ -3,13 +3,12 @@
 /** @var $Kernel \app\Kernel */
 global $Kernel;
 
-use app\builders\RequestBuilder;
+use app\builders\GetEvBuilder as Get;
 
-RequestBuilder::$domain = PHP_DOMAIN . "/";
-RequestBuilder::$default_controller = \app\controllers\SiteController::class;
+Get::$default_controller = \app\controllers\SiteController::class;
 
-/** @var $builder RequestBuilder */
-$builder = return_factory("builders")->createBuilder("Request");
+/** @var $builder Get */
+$builder = factory("builders")->createBuilder("GetEv");
 
 // Call to Kernel to method 'registerEvent' to set a request rule
 $Kernel->registerEvent((clone $builder)->get("lng", "([a-z]+)")->method("lng")->init());

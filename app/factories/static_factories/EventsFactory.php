@@ -8,7 +8,17 @@ use app\events\Event;
 
 class EventsFactory extends StaticFactory
 {
-    public function createEvent($event_name, $params = []): Event
+    public function getAllEvents($events_name = null)
+    {
+        return ($events_name === null
+            ? self::$instances :
+            (isset(self::$instances[$events_name])
+                ? self::$instances[$events_name]
+                : null)
+        );
+    }
+
+    public function create($event_name, $params = []): Event
     {
         $event = "app\\events\\{$event_name}Ev";
         return new $event(...$params);
@@ -26,47 +36,22 @@ class EventsFactory extends StaticFactory
             = new $event_namespace(...$params);
     }
 
-    public function registerEvent(Event $event)
+    public function register(Event $event)
     {
-        $ar = explode("\\", get_class($event));
-        $clazz = end($ar);
+        $arr = explode("\\", get_class($event));
+        $clazz = end($arr);
 
         if (!isset(self::$instances[$clazz]))
             self::$instances[$clazz] = [];
 
-        self::$instances[$clazz][] = $event;
+        return self::$instances[$clazz][] = $event;
     }
 
-    public function runAllEvents($events_name)
+    public function unregister($event_name, $inst = null)
     {
-        $events_name .= "Ev";
-
-        if (isset(self::$instances[$events_name]))
-        {
-            foreach (self::$instances[$events_name] as $instance)
-            {
-                $instance->run();
-            }
-
-            unset(self::$instances[$events_name]);
-        }
-    }
-
-    public function runEventsByFindString($events_name, $find_str)
-    {
-        $events_name .= "Ev";
-
-        if (isset(self::$instances[$events_name]))
-        {
-            foreach (self::$instances[$events_name] as $key => $instance)
-            {
-                if (($params = $instance->check($find_str)) !== false)
-                {
-                    unset($params[0]);
-                    $instance->run($params);
-                    unset(self::$instances[$events_name][$key]);
-                }
-            }
-        }
+        if ($inst === null)
+            unset(self::$instances[$event_name]);
+        else
+            unset(self::$instances[$event_name][array_search($inst, self::$instances[$event_name])]);
     }
 }
