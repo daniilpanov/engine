@@ -14,8 +14,8 @@ class PostEv extends RequestEv
         $this->post = $post;
     }
 
-    public function check($params): bool
+    public function preInit($params)
     {
-
+        // TODO: Implement preInit() method.
     }
 }

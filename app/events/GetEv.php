@@ -15,7 +15,7 @@ class GetEv extends RequestEv
         $this->get = $get;
     }
 
-    public function check($get)
+    public function preInit($get)
     {
         if ($this->get === null)
             return ($get === null ? true : false);

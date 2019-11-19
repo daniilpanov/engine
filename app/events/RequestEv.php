@@ -4,7 +4,7 @@
 namespace app\events;
 
 
-abstract class RequestEv extends Event
+abstract class RequestEv extends SafetyEvent
 {
     public function __construct($controller, $method = null)
     {
@@ -20,6 +20,4 @@ abstract class RequestEv extends Event
 
         parent::__construct($func);
     }
-
-    abstract public function check($params);
 }

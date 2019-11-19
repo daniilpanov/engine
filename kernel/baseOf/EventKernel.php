@@ -5,7 +5,8 @@ namespace engine\baseOf;
 
 
 use app\events\Event;
-use app\factories\static_factories\StaticFactory;
+use app\events\SafetyEvent;
+use app\factories\Factory;
 
 class EventKernel
 {
@@ -25,14 +26,14 @@ class EventKernel
         $events_name .= "Ev";
 
         /** @var $instances Event[] */
-        if ($instances = StaticFactory::events()->getAllEvents($events_name))
+        if ($instances = Factory::events()->getAllEvents($events_name))
         {
             foreach ($instances as $instance)
             {
                 $instance->run();
             }
 
-            StaticFactory::events()->unregister($events_name);
+            Factory::events()->unregister($events_name);
         }
     }
 
@@ -40,12 +41,12 @@ class EventKernel
     {
         $events_name .= "Ev";
 
-        /** @var $instances Event[] */
-        if ($instances = StaticFactory::events()->getAllEvents($events_name))
+        /** @var $instances SafetyEvent[] */
+        if ($instances = Factory::events()->getAllEvents($events_name))
         {
             foreach ($instances as $key => $instance)
             {
-                if (($params2 = $instance->check($params)) !== false)
+                if (($params2 = $instance->preInit($params)) !== false)
                 {
                     if ($params2 === null || $params2 === true)
                         $instance->run();
@@ -59,16 +60,16 @@ class EventKernel
 
     public function create($event, ...$params)
     {
-        return StaticFactory::events()->create($event, $params);
+        return Factory::events()->createEvent($event, $params);
     }
 
     public function register(Event $event)
     {
-        return StaticFactory::events()->register($event);
+        return Factory::events()->registerEvent($event);
     }
 
     public function createAndRegister($event, ...$params)
     {
-        return StaticFactory::events()->createAndRegister($event, $params);
+        return Factory::events()->createAndRegister($event, $params);
     }
 }

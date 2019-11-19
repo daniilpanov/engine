@@ -5,7 +5,7 @@ namespace app;
 
 
 use app\commands\RouterCommands;
-use app\factories\static_factories\StaticFactory;
+use app\factories\Factory;
 use app\helpers\Url;
 use engine\baseOf\EventKernel;
 
@@ -33,7 +33,7 @@ class Kernel
         //
 
         //
-        Url::init(StaticFactory::models()->createModel("Url", [getUrl()]));
+        Url::init(Factory::models()->createModel("Url", [getUrl()]));
         // Routing
         RouterCommands::route();
     }

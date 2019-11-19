@@ -1,12 +1,13 @@
 <?php
 
 
-namespace app\factories\static_factories;
+namespace app\factories;
 
 
+use app\BaseObj;
 use app\builders\Builder;
 
-class BuildersFactory extends StaticFactory
+class BuildersFactory extends BaseObj
 {
     public function createBuilder($builder_name, ...$params): Builder
     {

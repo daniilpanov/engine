@@ -14,7 +14,7 @@ class UrlEv extends RequestEv
         $this->url = $url;
     }
 
-    public function check($params): bool
+    public function preInit($params): bool
     {
         if (!isset($params['url']))
             return false;

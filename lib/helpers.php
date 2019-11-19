@@ -2,7 +2,7 @@
 
 function global_factory()
 {
-    return \app\factories\static_factories\StaticFactory::class;
+    return \app\factories\Factory::class;
 }
 
 function factory($factory)

@@ -1,10 +1,10 @@
 <?php
 
 
-namespace app\factories\static_factories;
+namespace app\factories;
 
 
-class ControllersFactory extends StaticFactory
+class ControllersFactory extends SingletonFactory
 {
     public function getController($controller_name, $is_absolute_namespace = false)
     {
@@ -20,9 +20,6 @@ class ControllersFactory extends StaticFactory
             $namespace = "app\\controllers\\$controller_name";
         }
 
-        if (!isset(self::$instances[$controller_name]))
-            self::$instances[$controller_name] = new $namespace;
-
-        return self::$instances[$controller_name];
+        return $this->get($controller_name, $namespace);
     }
 }

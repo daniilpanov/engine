@@ -1,10 +1,10 @@
 <?php
 
 
-namespace app\factories\static_factories;
+namespace app\factories;
 
 
-class CommandsFactory extends StaticFactory
+class CommandsFactory extends SingletonFactory
 {
     public function getCommandClass($command_class, $is_absolute_namespace = false)
     {
@@ -20,11 +20,6 @@ class CommandsFactory extends StaticFactory
             $namespace = "app\\commands\\$command_class";
         }
 
-        if (!isset(self::$instances[$command_class]))
-        {
-            self::$instances[$command_class] = new $namespace;
-        }
-
-        return self::$instances[$command_class];
+        return $this->get($command_class, $namespace);
     }
 }

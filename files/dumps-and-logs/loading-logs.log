@@ -47,3 +47,8 @@ Requiring failed: class 'app\builders\RequestBuilder' does not exist (17.11.2019
 Requiring failed: class 'app\builders\RequestBuilder' does not exist (17.11.2019 at 07:49:17)
 Requiring failed: class 'app\builders\RequestBuilder' does not exist (17.11.2019 at 07:53:11)
 Requiring failed: class 'app\builders\RequestBuilder' does not exist (17.11.2019 at 07:54:12)
+Requiring failed: class 'app\factories\static_factories\StaticFactory' does not exist (19.11.2019 at 09:31:05)
+Requiring failed: class 'app\factories\static_factories\StaticFactory' does not exist (19.11.2019 at 09:33:47)
+Requiring failed: class 'engine\baseOf\StaticFactory' does not exist (19.11.2019 at 09:34:17)
+Requiring failed: class 'engine\baseOf\StaticFactory' does not exist (19.11.2019 at 09:34:41)
+Requiring failed: class 'app\factories\static_factories\StaticFactory' does not exist (19.11.2019 at 09:36:00)
