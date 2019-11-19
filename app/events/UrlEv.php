@@ -5,7 +5,7 @@ namespace app\events;
 
 class UrlEv extends RequestEv
 {
-    private $url;
+    public $url;
 
     public function __construct($url, $controller, $method = null)
     {

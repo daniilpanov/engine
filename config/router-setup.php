@@ -4,6 +4,7 @@
 global $Kernel;
 
 use app\builders\GetEvBuilder as Get;
+use app\builders\UrlEvBuilder as Url;
 
 Get::$default_controller = \app\controllers\SiteController::class;
 

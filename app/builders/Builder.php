@@ -8,5 +8,5 @@ use app\BaseObj;
 
 abstract class Builder extends BaseObj
 {
-    abstract function init();
+    abstract public function init();
 }

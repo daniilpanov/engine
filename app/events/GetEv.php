@@ -43,25 +43,4 @@ class GetEv extends RequestEv
 
         return (!empty($found) ? $this->oneLevel($found) : true);
     }
-
-    private function oneLevel($array)
-    {
-        $arr = [];
-
-        foreach ($array as $item)
-        {
-            if (!is_array($item))
-            {
-                $arr[] = $item;
-                continue;
-            }
-
-            foreach ($item as $item2)
-            {
-                $arr[] = $item2;
-            }
-        }
-
-        return $arr;
-    }
 }

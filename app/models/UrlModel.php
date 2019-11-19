@@ -28,4 +28,9 @@ class UrlModel extends Model
             $obj->full_url = $params[0];
         }
     }
+
+    public function getUrlWithoutRequests()
+    {
+
+    }
 }
